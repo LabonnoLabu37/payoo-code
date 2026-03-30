@@ -22,9 +22,10 @@ document.addEventListener("click", function () {
     // match pin and mobile number
   if (contactNumber == "01805222906" && pin == "1234") {
     alert("login successful");
-    window.location.assign = "home.html";
+    window.location.assign("/home.html");
 } else {
     alert("Login Failed");
+    return ;
 }
 
   });
