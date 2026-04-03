@@ -34,7 +34,7 @@ if(pin === '1234'){
     console.log(newBalance);
 setBalance(newBalance);
 
-addTransaction(`Cashout ৳${cashoutAmount} , ${accno}, ${new Date()}`);
+addTransaction(`Cashout ৳${cashoutAmount} ,${new Date()}`);
 } else{
     alert("Invalid pin");
     return;
