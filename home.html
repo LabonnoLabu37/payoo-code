@@ -47,7 +47,7 @@
           </div>
           <div class="balance-info">
             <h2 class="text-2xl font-bold">
-              $ <span id="balance">45000</span>
+              $ <span id="balance">188000</span>
             </h2>
             <p class="text-neutral/50">Available Balance</p>
           </div>
@@ -71,34 +71,35 @@
       </p>
 
       <div class="buttons grid grid-cols-3 gap-3">
-        <button class="btn flex-col h-full py-4 btn-soft">
+        <button onclick="showOnly(`add-money`)" class="btn flex-col h-full py-4 btn-soft">
           <img src="assets/opt-1.png" alt="" />
           <p>Add Money</p>
         </button>
-        <button class="btn flex-col h-full py-4 btn-soft">
+        <button  onclick="showOnly(`cashout`)"  class="btn flex-col h-full py-4 btn-soft">
           <img src="assets/opt-2.png" alt="" />
           <p>Cashout</p>
-        </button>
-        <button class="btn flex-col h-full py-4 btn-soft">
-          <img src="assets/opt-3.png" alt="" />
-          <p>Send Money</p>
-        </button>
-        <button class="btn flex-col h-full py-4 btn-soft">
-          <img src="assets/opt-4.png" alt="" />
-          <p>Get Bonus</p>
-        </button>
-        <button class="btn flex-col h-full py-4 btn-soft">
-          <img src="assets/opt-5.png" alt="" />
-          <p>Pay Bill</p>
-        </button>
-        <button class="btn flex-col h-full py-4 btn-soft">
-          <img src="assets/opt-6.png" alt="" />
-          <p>Transactions</p>
-        </button>
+        <button onclick="showOnly(`send-money`)" class="btn flex-col h-full py-4 btn-soft">
+  <img src="assets/opt-3.png" alt="" />
+  <p>Send Money</p>
+</button>
+        <button onclick="showOnly(`get-bonus`)" class="btn flex-col h-full py-4 btn-soft">
+  <img src="assets/opt-4.png" alt="" />
+  <p>Get Bonus</p>
+</button>
+
+<button onclick="showOnly(`pay-bill`)" class="btn flex-col h-full py-4 btn-soft">
+  <img src="assets/opt-5.png" alt="" />
+  <p>Pay Bill</p>
+</button>
+
+<button onclick="showOnly(`transactions`)" class="btn flex-col h-full py-4 btn-soft">
+  <img src="assets/opt-6.png" alt="" />
+  <p>Transactions</p>
+</button>
       </div>
     </section>
 
-    <section id="add-money" class="w-11/12 mx-auto py-5">
+    <section id="add-money" class="w-11/12 mx-auto py-5 hidden">
        <h2 class="text-2xl font-bold mb-5">Add Money</h2>
        <div class="pt-2">
         <div class="card bg-base-100 w-full shadow rounded-md">
@@ -106,7 +107,7 @@
             <fieldset class="fieldset">
                 <label class="label text-netural font-bold">Select Bank</label>
               <select class="select w-full bg-base-200 rounded-full" id="add-money-bank">
-  <option disabled selected>Select a bank</option>
+  <option disabled selected>Select a Bank</option>
   <option value="DBBL">DBBL</option>
   <option value="IBBL">IBBL</option>
   <option value="CITY">City Bank</option>
@@ -154,7 +155,7 @@
       </div>
     </section>
 
-    <section id="cashout" class="w-11/12 mx-auto py-5">
+    <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
       <h2 class="text-2xl font-bold mb-5">Cashout</h2>
       <div class="pt-2">
         <div class="card bg-base-100 w-full shadow rounded-md">
@@ -201,7 +202,106 @@
         </div>
       </div>
     </section>
-    <script src="script/machine.js"></script>
-    <script src="script/cashout.js"></script>
+
+    <section id="send-money" class="w-11/12 mx-auto py-5 hidden">
+  <h2 class="text-2xl font-bold mb-5">Send Money</h2>
+
+  <div class="card bg-base-100 w-full shadow rounded-md">
+    <div class="card-body">
+
+      <fieldset class="fieldset">
+
+        <!-- Receiver -->
+        <label class="label font-bold">Receiver Number</label>
+        <input
+          type="text"
+          id="send-number"
+          maxlength="11"
+          class="input rounded-full bg-base-200 w-full"
+          placeholder="Enter receiver number"
+        />
+
+        <br />
+
+        <!-- Amount -->
+        <label class="label font-bold">Amount</label>
+        <input
+          type="text"
+          id="send-amount"
+          class="input rounded-full bg-base-200 w-full"
+          placeholder="Enter amount"
+        />
+
+        <br />
+
+        <!-- PIN -->
+        <label class="label font-bold">4 Digit PIN</label>
+        <input
+          id="send-pin"
+          type="password"
+          maxlength="4"
+          class="input rounded-full bg-base-200 w-full"
+          placeholder="Enter PIN"
+        />
+
+        <!-- Button -->
+        <button id="send-btn" class="btn btn-primary mt-4 rounded-full">
+          Send Money
+        </button>
+
+      </fieldset>
+
+    </div>
+  </div>
+</section>
+
+<section id="get-bonus" class="w-11/12 mx-auto py-5 hidden">
+  <h2 class="text-2xl font-bold mb-5">Get Bonus</h2>
+
+  <div class="card bg-base-100 shadow">
+    <div class="card-body">
+      <input id="bonus-coupon" type="text" placeholder="Enter coupon" class="input input-bordered w-full" />
+      <button id="bonus-btn" class="btn btn-primary mt-4">Get Bonus</button>
+    </div>
+  </div>
+</section>
+
+<section id="pay-bill" class="w-11/12 mx-auto py-5 hidden">
+  <h2 class="text-2xl font-bold mb-5">Pay Bill</h2>
+
+  <div class="card bg-base-100 shadow">
+    <div class="card-body">
+
+      <select id="bill-type" class="select w-full mb-3">
+        <option disabled selected>Select bill</option>
+        <option>Electricity</option>
+        <option>Gas</option>
+        <option>Water</option>
+      </select>
+
+      <input id="bill-number" type="text" placeholder="Account number" class="input w-full mb-3" />
+
+      <input id="bill-amount" type="text" placeholder="Amount" class="input w-full mb-3" />
+
+      <input id="bill-pin" type="password" placeholder="PIN" class="input w-full mb-3" />
+
+      <button id="pay-btn" class="btn btn-primary">Pay Now</button>
+
+    </div>
+  </div>
+</section>
+
+<section id="transactions" class="w-11/12 mx-auto py-5 hidden">
+  <h2 class="text-2xl font-bold mb-5">Transactions</h2>
+
+  <div id="history" class="space-y-3"></div>
+</section>
+
+ <script src="script/machine.js"></script>
+<script src="script/addMoney.js"></script>
+<script src="script/cashout.js"></script>
+<script src="script/sendMoney.js"></script>
+<script src="script/payBill.js"></script> <!-- MUST -->
+<script src="script/bonus.js"></script>
   </body>
 </html>
